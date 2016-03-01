@@ -1,0 +1,46 @@
+<ol class="breadcrumb">
+    <li><a href="#">基础信息</a></li>
+    <li class="active">供应商信息</li>
+</ol>
+<div class="row">
+    <div class="col-lg-5 col-sm-5">
+        <div class="input-group input-group-sm">
+            <input class="form-control" placeholder="供应商名称"><a class="input-group-addon fa fa-search btn btn-primary">搜索</a>
+        </div>
+    </div>
+    <div class="col-lg-7 col-sm-7">
+        <div class="btn-group btn-group-sm">
+            <a class="btn btn-primary" href="#"><i class="fa fa-user"></i>录入新客户</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>供应商名称</th>
+            <th>修改供应商</th>
+            <th>供应商联系人</th>
+            <th>认证证书有效期</th>
+            <th>质保协议有效期</th>
+            <th>委托书有效期</th>
+            <th>药品许可证编号</th>
+            <th>药品许可证有效期</th>
+            <th>营业执照有效期</th>
+            <th>操作</th>
+        </tr>
+        <tr ng-repeat="supplier in list">
+            <td>{{supplier.name}}</td>
+            <td></td>
+            <td>{{supplier.contactPerson}}</td>
+            <td>{{supplier.credentialsValidate}}</td>
+            <td>{{supplier.warrantyAgreementValidate}}</td>
+            <td>{{supplier.powerOfAttorneyValidate}}</td>
+            <td>{{supplier.drugLicenseNumber}}</td>
+            <td>{{supplier.drugLicenseValidate}}</td>
+            <td>{{supplier.businessLicenseValidate}}</td>
+            <td></td>
+        </tr>
+    </table>
+</div>

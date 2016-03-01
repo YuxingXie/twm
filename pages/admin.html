@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html ng-app="mainApp">
+<head>
+    <title>twm管理平台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--<link rel="shortcut icon" href="${path}/statics/assets/img/favicon.ico"/>-->
+    <!--<link rel="bookmark" href="${path}/statics/assets/img/favicon.ico"/>-->
+    <link href="../plugins/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../plugins/bootstrap-3.3.0/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/admin.css" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]>
+    <script src="../plugins/respond.min.js"></script>
+    <![endif]-->
+    <script src="../plugins/jquery-2.1.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div>
+    <div class="row" style="margin-top: 30px;font-size:large;margin-left: 4px;">
+        <div class="col-lg-3 col-sm-3 btn-group btn-group-xs" ng-init="showMenu=true">
+            <a class="btn btn-primary" data-ng-click="showMenu=!showMenu" href="${path}/admin/logout">
+                <i class="fa fa-user"></i>唐为民 退出<i class="fa fa-sign-out"></i>
+            </a>
+            <button class="btn btn-primary" data-ng-click="showMenu=!showMenu">
+                隐藏/显示菜单<i ng-class="{'fa':true,'fa-eye':showMenu,'fa-eye-slash':!showMenu}"></i>
+            </button>
+        </div>
+        <div class="col-lg-7 col-sm-7 text-center">
+            <div class="center-block">twm系统</div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3" ng-if="showMenu">
+                <ul id="main-nav" class="main-nav nav nav-tabs nav-stacked" style="">
+                    <li>
+                        <a href="#/index">
+                            <i class="fa fa-home"></i>
+                            首页
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-cog"></i>
+                            基础信息
+                            <span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
+                        </a>
+                        <ul id="systemSetting" class="nav nav-list secondmenu collapse" style="height: 0px;">
+                            <li><a href="#/customer-info"><i class="fa fa-user fa-fw"></i>&nbsp;客户信息</a></li>
+                            <li><a href="#/supplier-info"><i class="fa fa-reply fa-fw"></i>&nbsp;供应商信息</a></li>
+                            <li><a href="${path}/admin/notify/list"><i class="fa fa-envelope fa-fw"></i>&nbsp;产品信息</a>
+                            </li>
+                            <li><a href="${path}/admin/notify/list"><i class="fa fa-envelope fa-fw"></i>&nbsp;人员信息</a>
+                            </li>
+                            <li><a href="${path}/admin/notify/list"><i class="fa fa-envelope fa-fw"></i>&nbsp;项目自定义</a>
+                            </li>
+                            <li><a href="${path}/admin/notify/list"><i class="fa fa-envelope fa-fw"></i>&nbsp;项目自定义</a>
+                            </li>
+                            <li><a href="${path}/admin/notify/list"><i class="fa fa-envelope fa-fw"></i>&nbsp;税票公司信息</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#configSetting" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="fa fa-cubes"></i>
+                            采购进货管理
+                            <span class="pull-right glyphicon  glyphicon-chevron-toggle"></span>
+                        </a>
+                        <ul id="configSetting" class="nav nav-list secondmenu collapse">
+                            <li ng-class="{'active':false}"><a href="${path}/admin/product_series/list"><i
+                                    class="glyphicon glyphicon-globe"></i>&nbsp;录入采购单</a></li>
+                            <li><a href="${path}/admin/product_category/create_input"><i
+                                    class="glyphicon glyphicon-star-empty"></i>&nbsp;录入退货单</a></li>
+                            <li><a href="${path}/admin/top_carousel/list"><i class="glyphicon glyphicon-ok-circle"></i>&nbsp;查询修改订单</a>
+                            </li>
+                            <li><a href="${path}/admin/home_page_block/list"><i
+                                    class="glyphicon glyphicon-ok-circle"></i>&nbsp;审批采购单</a></li>
+                            <li><a href="${path}/admin/home_page_block/list"><i
+                                    class="glyphicon glyphicon-ok-circle"></i>&nbsp;货到入库</a></li>
+                            <li><a href="${path}/admin/home_page_block/list"><i
+                                    class="glyphicon glyphicon-ok-circle"></i>&nbsp;查询修改入库单</a></li>
+                            <li><a href="${path}/admin/home_page_block/list"><i
+                                    class="glyphicon glyphicon-ok-circle"></i>&nbsp;付款及发票统计</a></li>
+                            <li><a href="${path}/admin/home_page_block/list"><i
+                                    class="glyphicon glyphicon-ok-circle"></i>&nbsp;当前库存</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#disSetting" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="fa fa-list"></i>
+                            采购发票管理
+                            <span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
+                        </a>
+                        <ul id="disSetting" class="nav nav-list secondmenu collapse">
+                            <li><a href="${path}/admin/order/to_handler"><i class="glyphicon glyphicon-th-list"></i>录入采购发票</a>
+                            </li>
+                            <li><a href="${path}/admin/order/return_exchange"><i
+                                    class="glyphicon glyphicon-th-list"></i>查询修改采购发票</a></li>
+                            <li><a href="${path}/admin/order/return_exchange"><i
+                                    class="glyphicon glyphicon-th-list"></i>采购发票统计</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#aSetting" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="fa fa-list"></i>
+                            采购付款管理
+                            <span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
+                        </a>
+                        <ul id="aSetting" class="nav nav-list secondmenu collapse">
+                            <li><a href="${path}/admin/order/to_handler"><i class="glyphicon glyphicon-th-list"></i>录入采购付款</a>
+                            </li>
+                            <li><a href="${path}/admin/order/return_exchange"><i
+                                    class="glyphicon glyphicon-th-list"></i>查询修改付款</a></li>
+                            <li><a href="${path}/admin/order/return_exchange"><i
+                                    class="glyphicon glyphicon-th-list"></i>采购付款统计</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#bSetting" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="fa fa-list"></i>
+                            药品销售管理
+                            <span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
+                        </a>
+                        <ul id="bSetting" class="nav nav-list secondmenu collapse">
+                            <li><a href="${path}/admin/order/to_handler"><i class="glyphicon glyphicon-th-list"></i>录入出库单</a></li>
+                            <li><a href="${path}/admin/order/return_exchange"><i class="glyphicon glyphicon-th-list"></i>录入退货单</a></li>
+                            <li><a href="${path}/admin/order/return_exchange"><i class="glyphicon glyphicon-th-list"></i>查询修改出库单</a></li>
+                            <li><a href="${path}/admin/order/return_exchange"><i class="glyphicon glyphicon-th-list"></i>审批出库单</a></li>
+                            <li><a href="${path}/admin/order/return_exchange"><i class="glyphicon glyphicon-th-list"></i>发货跟进</a></li>
+                            <li><a href="${path}/admin/order/return_exchange"><i class="glyphicon glyphicon-th-list"></i>当前库存</a></li>
+                            <li><a href="${path}/admin/order/return_exchange"><i class="glyphicon glyphicon-th-list"></i>库存盘点</a></li>
+                            <li><a href="${path}/admin/order/return_exchange"><i class="glyphicon glyphicon-th-list"></i>购销存汇总</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#cSetting" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="fa fa-list"></i>
+                            销售开票管理
+                            <span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
+                        </a>
+                        <ul id="cSetting" class="nav nav-list secondmenu collapse">
+                            <li><a href="${path}/admin/order/to_handler"><i class="glyphicon glyphicon-th-list"></i>录入销售发票</a></li>
+                            <li><a href="${path}/admin/order/return_exchange"><i class="glyphicon glyphicon-th-list"></i>查询修改销售发票</a></li>
+                            <li><a href="${path}/admin/order/return_exchange"><i class="glyphicon glyphicon-th-list"></i>查询修改出库单</a></li>
+                            <li><a href="${path}/admin/order/return_exchange"><i class="glyphicon glyphicon-th-list"></i>发票应付税款</a></li>
+                            <li><a href="${path}/admin/order/return_exchange"><i class="glyphicon glyphicon-th-list"></i>销售开票统计</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#dSetting" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="fa fa-list"></i>
+                            销售回款管理
+                            <span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
+                        </a>
+                        <ul id="dSetting" class="nav nav-list secondmenu collapse">
+                            <li><a href="${path}/admin/order/to_handler"><i class="glyphicon glyphicon-th-list"></i>录入销售收款</a></li>
+                            <li><a href="${path}/admin/order/return_exchange"><i class="glyphicon glyphicon-th-list"></i>查询修改收款</a></li>
+                            <li><a href="${path}/admin/order/return_exchange"><i class="glyphicon glyphicon-th-list"></i>发票回款统计</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#eSetting" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-bold"></i>
+                            系统管理
+                            <span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
+                        </a>
+                        <ul id="eSetting" class="nav nav-list secondmenu collapse">
+                            <li><a href="#"><i class="glyphicon glyphicon-text-width"></i>&nbsp;用户管理</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-text-width"></i>&nbsp;权限管理</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-text-width"></i>&nbsp;数据备份</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-text-width"></i>&nbsp;数据清除</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-text-width"></i>&nbsp;数据恢复</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="glyphicon glyphicon-fire"></i>
+                            关于系统
+                            <span class="badge pull-right">1</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div ng-class="{'col-md-9':showMenu,'col-md-12':!showMenu}">
+                <div ng-view>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="../plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="../plugins/angular-1.4.8/angular.js"></script>
+<script type="text/javascript" src="../plugins/angular-1.4.8/angular-route.min.js"></script>
+<script src="../plugins/bootstrap-3.3.0/dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+<script>
+    var mainApp = angular.module("mainApp", ['ngRoute']);
+</script>
+<script src="../js/angularjs/controller/CustomerInfoController.js" type="text/javascript"></script>
+<script src="../js/angularjs/controller/SupplierInfoController.js" type="text/javascript"></script>
+
+<script>
+    mainApp.config(["$routeProvider", function ($routeProvider) {
+        $routeProvider.when("/", {
+            template: "<h1>内容部分</h1>"
+        }).when("/index", {
+            templateUrl: "index.html"
+        }).when("/customer-info", {
+            templateUrl: "/twm/pages/base-info/customer-info.html",
+            controller: 'CustomerInfoController'
+        }).when("/supplier-info", {
+            templateUrl: "/twm/pages/base-info/supplier-info.html",
+            controller: 'SupplierInfoController'
+        })
+
+                .otherwise({
+                    template: "<h2>这个是默认的模板哦</h2>"
+                });
+    }]);
+</script>
+</html>
+
