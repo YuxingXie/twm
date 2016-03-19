@@ -206,14 +206,14 @@
 <script>
     mainApp.config(["$routeProvider", function ($routeProvider) {
         $routeProvider.when("/", {
-            template: "<h1>内容部分</h1>"
+            template: "<h1>欢迎使用twm</h1>"
         }).when("/index", {
-            templateUrl: "index.html"
+            templateUrl: "/twm/statics/pages/index.html"
         }).when("/customer-info", {
-            templateUrl: "/twm/pages/base-info/customer-info.html",
+            templateUrl: "/twm/statics/pages/base-info/customer-info.html",
             controller: 'CustomerInfoController'
         }).when("/supplier-info", {
-            templateUrl: "/twm/pages/base-info/supplier-info.html",
+            templateUrl: "/twm/statics/pages/base-info/supplier-info.html",
             controller: 'SupplierInfoController'
         })
 
